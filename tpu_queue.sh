@@ -1,0 +1,1 @@
+gcloud alpha compute tpus queued-resources create hc-tpuv4-32-1 --node-id hc-tpuv4-32-1 --project tpucloud-196821 --zone us-central2-b --accelerator-type v4-32 --best-effort --runtime-version tpu-vm-v4-pt-1.13
