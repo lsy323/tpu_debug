@@ -38,6 +38,7 @@ def main(rank, args):
     output = [torch.zeros_like(t) for _ in range(dist.get_world_size())]
     dist.all_gather(output, t)
     xm.mark_step()
+    xm.rendezvous('handler')
     print('End of main function')
     
 
