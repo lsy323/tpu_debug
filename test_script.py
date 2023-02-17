@@ -12,7 +12,6 @@ import torch.distributed as dist
 import torch_xla.distributed.xla_backend
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch_xla.experimental import pjrt
-import torch_xla.experimental.pjrt_backend
 
 import argparse
 import datetime
