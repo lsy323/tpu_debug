@@ -12,6 +12,7 @@ import torch.distributed as dist
 import torch_xla.distributed.xla_backend
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch_xla.experimental import pjrt
+import torch_xla.experimental.pjrt_backend
 
 import argparse
 import datetime
@@ -38,7 +39,6 @@ def main(rank, args):
     output = [torch.zeros_like(t) for _ in range(dist.get_world_size())]
     dist.all_gather(output, t)
     xm.mark_step()
-    xm.rendezvous('handler')
     print('End of main function')
     
 
