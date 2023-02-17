@@ -34,9 +34,12 @@ def get_args():
 def main(rank, args):
     print('In main function')
     dist.init_process_group('xla', init_method='pjrt://', world_size=xm.xrt_world_size(), rank=xm.get_ordinal())
-    device = xm.xla_device()
+    t = torch.tensor([index], dtype=torch.int32, device=xm.xla_device())
+    output = [torch.zeros_like(t) for _ in range(dist.get_world_size())]
+    dist.all_gather(output, t)
+    xm.mark_step()
     print('End of main function')
-
+    
 
 if __name__ == '__main__':
     opts = get_args()
