@@ -1,16 +1,23 @@
+#import torch
+#import torch_xla
+#import torch_xla.debug.metrics as met
+#import torch_xla.distributed.parallel_loader as pl
+#import torch_xla.debug.profiler as xp
+#import torch_xla.utils.utils as xu
+#import torch_xla.core.xla_model as xm
+#import torch_xla.distributed.xla_multiprocessing as xmp
+#import torch_xla.test.test_utils as test_utils
+#
+#import torch.distributed as dist
+#import torch_xla.distributed.xla_backend
+#from torch.nn.parallel import DistributedDataParallel as DDP
+#from torch_xla.experimental import pjrt
+
 import torch
-import torch_xla
-import torch_xla.debug.metrics as met
-import torch_xla.distributed.parallel_loader as pl
-import torch_xla.debug.profiler as xp
-import torch_xla.utils.utils as xu
+import torch.distributed as dist
 import torch_xla.core.xla_model as xm
 import torch_xla.distributed.xla_multiprocessing as xmp
-import torch_xla.test.test_utils as test_utils
-
-import torch.distributed as dist
-import torch_xla.distributed.xla_backend
-from torch.nn.parallel import DistributedDataParallel as DDP
+import torch_xla.experimental.pjrt_backend
 from torch_xla.experimental import pjrt
 
 import argparse
