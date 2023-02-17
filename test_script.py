@@ -33,7 +33,7 @@ def get_args():
 
 def main(rank, args):
     print('In main function')
-    dist.init_process_group('xla', world_size=xm.xrt_world_size(), rank=xm.get_ordinal())
+    dist.init_process_group('xla', init_method='pjrt://', world_size=xm.xrt_world_size(), rank=xm.get_ordinal())
     device = xm.xla_device()
     print('End of main function')
 
